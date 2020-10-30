@@ -1,0 +1,39 @@
+{%load static %}
+<title>{% block title %} Checkout {% endblock %}</title>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<body>
+    <div class="container"> {% include 'head.html' %}
+
+    </div>{% block content %}
+    <div class="container">
+        <h1>Checkout</h1>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Your order</h3>
+                        <ul>
+                            {% for item in cart %}
+                            <li>
+                                {{ item.quantity }}x {{ item.product.name }}
+                                <span>${{ item.total_price }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <p>Total: ${{ cart.get_total_price }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <form action="." class="order-form">
+                    {{ form.as_p }}
+                    <p><input type="submit" value="Place order"></p>
+                    {% csrf_token %}
+                </form>
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}
+</body>

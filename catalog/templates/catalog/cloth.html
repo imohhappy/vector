@@ -1,0 +1,33 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+
+<body>
+    {% include 'head.html' %} {% block content %}
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <p class="text-center"><a href="{% url 'product:detail' product.category.id %}">{{product.name}}</a></p>
+            <hr>
+            <p style="display: flex; justify-content: center"><img src="{{product.image.url}}" style="width:150px; height:100px">
+                <p class="text-center"> {{product.overview|linebreaks}}</p>
+                <p class="text-center"> {{ product.overview }} </p>
+                <p class="price">${{ product.price }}</p>
+                <form action="{% url 'product:cart_add' product.id %}" method="post">
+                    {{ cart_product_form }} {% csrf_token %}
+                    <input type="submit" value="Add to cart" class="btn btn-success">
+                </form>
+                {{ product.description|linebreaks }}
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>

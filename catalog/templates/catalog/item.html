@@ -1,0 +1,99 @@
+{%load static %}
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+{% block content %}
+ <center>
+<div class="container">
+    {% include 'head.html' %}
+    <div class="row" style="margin-top: 20px">
+        <div class="col-sm-11" style="border-right: 3px; margin-left: 40px">
+            <div class="card-header">
+                Shoes
+            </div>
+            <div class="cards" style="display: flex; justify-content: space-around; margin-top: 10px">
+
+                {% for items in category %}
+                <div class="card" style="border-radius: 20px; width: 15rem">
+                    <div class="card-body">
+                        <div class="card-header text-center">
+                            <a href="{% url 'product:detail' items.pk %}">
+                                <p class="text-center"> {{ items.name }}</p>
+                                <p><img src="{{items.image.url }}" style="height: 100px; width: 150px"></p>
+                            </a>
+                            <p class="text-center"> {{ items.overview }}</p>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="cards" style="display: flex; justify-content: space-around; margin-top: 10px">
+
+                {% for items in category1 %}
+                <div class="card" style="border-radius: 20px; width: 15rem">
+                    <div class="card-body">
+                        <div class="card-header text-center">
+                            <a href="{% url 'product:detail' items.pk %}">
+                                <p class="text-center"> {{ items.name }}</p>
+                                <p><img src="{{items.image.url }}" style="height: 100px; width: 150px"></p>
+                            </a>
+                            <p class="text-center"> {{ items.overview }}</p>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="card-header" style="margin-top: 20px">
+                Cloth
+            </div>
+            <div class="cards" style="display: flex; justify-content: space-around; margin-top: 10px">
+
+                {% for items in category2 %}
+                <div class="card" style="border-radius: 20px; width: 15rem">
+                    <div class="card-body">
+                        <div class="card-header text-center">
+                            <a href="{% url 'product:detail' items.pk %}">
+                                <p class="text-center"> {{ items.name }}</p>
+                                <p><img src="{{items.image.url }}" style="height: 100px; width: 150px"></p>
+                            </a>
+                            <p class="text-center"> {{ items.overview }}</p>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="cards" style="display: flex; justify-content: space-around; margin-top: 10px">
+
+                {% for items in category3 %}
+                <div class="card" style="border-radius: 20px; width: 15rem">
+                    <div class="card-body">
+                        <div class="card-header text-center">
+                            <a href="{% url 'product:detail' items.pk %}">
+                                <p class="text-center"> {{ items.name }}</p>
+                                <p><img src="{{items.image.url }}" style="height: 100px; width: 150px"></p>
+                            </a>
+                            <p class="text-center"> {{ items.overview }}</p>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</center>
+{% endblock %}
+</body>
+
+</html>
